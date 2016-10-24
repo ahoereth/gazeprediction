@@ -1,7 +1,7 @@
 SRC=$(wildcard **/*.md)
-DST=$(SRC:.md=.pdf)
+PHONYS=$(SRC:.md=)
 
-all: $(DST)
+all: $(PHONYS)
 
-$(DST):
-	 pandoc $(@:.pdf=.md) -o $@
+$(PHONYS):
+	pandoc $@.md -o $@.pdf
