@@ -28,8 +28,13 @@ In order to explain the somehow occurring filtering two trains of though are pre
 Further investigating how subjects direct their attention Yarbus specifically studied eye movements. He recorded subjects eye movements while viewing images or natural scenes. He came to the conclusion that there indeed, as maybe suggested intuitively, is a strong relation between where subjects direct their gaze and what they focus their attention on. Yarbus was able to manipulate this by asking specific questions which resulted in subjects repetitively focussing their gaze on relevant areas of the image.
 
 
-### Feature Integration Theroy (Triesman)
+### Feature Integration Theory (Triesman)
+The feature integration theory describes a two step process for perception.
 
+1. In the first so called *preattentive* stage general features of the stimulus are unconsciously and therefore effortlessly perceived. Those features for a visual stimulus might for example contain color, motion and shapes.
+2. In the second, the focused attention stage, features are combined to individual objects when one directs his or her attention to them -- this is called feature integration.
+
+Due to the unconscious nature of the feature detection from the first stage it is, according to Triesman, possible to very quickly filter for objects of interest by their general features before actually having to actively attend to them in phase two.
 
 
 ## Gaze Plotting
@@ -37,8 +42,8 @@ In figure 1 and 2 the 7 fixation point sets are plotted onto their respective st
 
 The results for image 5 (figure 2) seem inconclusive: Either the fixation data set is labelled incorrectly (it might instead be related to the single bottle from image 6) or the fixations were recorded too early or late and are focussed on the center due to a fixation cross from the experiment design, the background noise or a transition from/to another image. Another possibility might be that the data is averaged: When an equal amount of focus lies on the left as on the right object, the average could result in the data on hand.
 
-![First set of images with fixation points.](00/focus1.jpg)
+![First set of images with fixation points.](00/ahoereth_focus1.jpg)
 
-![Second set of images with fixation points.](00/focus2.jpg)
+![Second set of images with fixation points.](00/ahoereth_focus2.jpg)
 
 > Guess, how many viewers in the experiment?
