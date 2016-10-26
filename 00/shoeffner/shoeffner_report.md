@@ -8,7 +8,7 @@ For the task there were only seven sets of fixation coordinates provided, thus t
 Most fixations seem to be at locations where one would expect logos or brands of the items depicted in the viewed images, in other
 words at locations where there seems to be more information (e.g. through corners and edges).
 
-![Images with gaze locations marked with red crosses.](shoeffner/Gazes.jpg)
+![Images with gaze locations marked with red crosses.](Gazes.jpg)
 
 # Outliers
 
