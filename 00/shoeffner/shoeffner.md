@@ -7,16 +7,15 @@
 ## Helmholtz's experiment and covert attention
 
 Hermann von Helmholtz's experiment (either 1894 (sheet), 1896 [@tsotsos], or
-1967 [@carrasco]) demonstrated that it is possible to shift attention without
+1867 [@carrasco]) demonstrated that it is possible to shift attention without
 eye movements [@tsotsos].
 
 In the experiment participants had to stare into an apparatus similar to a pinhole camera with two pinholes. They had to focus their eyes at two
-pinholes and keep them aligned. Then they had to focus, without moving their
-eyes, on a dark area inside the pinhole apparatus, so that they could
+pinholes and keep them aligned. Then they had to attend, without moving their
+eyes, a dark area inside the pinhole apparatus, so that they could
 identify objects when a little spark would lighten up the box. [@carrasco] This
 shift of attention to areas without active eye movements is called covert
-attention.
-
+attention, and Helmholtz showed with his experiment that it is possible.
 
 ## Early selection (Broadbent)
 
@@ -25,8 +24,8 @@ input as information to process he proposed that only limited parts of it can
 be processed at once. This led to the theory that a filter has to be in
 place to select the information which will be processed. A useful filter seems to be a goal-oriented selection of data, to guarantee that only important data is processed. [@wiki:broadbent]
 
-There are two different models for this kind of filted: early and late selection filters. In the early selection model ...
-In contrast, in the late selection model, ... [@wiki:broadbent]
+There are two different models for this kind of filted: early and late selection filters. In early selection models information is filtered before it is processed, so that only the information to be attended to is selected and processed at all.
+In contrast, in the late selection model, all information is processed but the outcome gets weighted according to its meaning. [@wiki:broadbent]
 
 
 ## Yarbus's records of eye movement
@@ -36,8 +35,9 @@ ten different kinds of suction devices (caps) for different purposes (e.g.
 experiments with images stationary relative to the retina) as well as
 different light sources and various photosensitive recording materials like
 film. He used his testing apparatus to research saccades in exploration of
-natural scenes and objects.  [@yarbus, esp. chapters I, IV, VII]
+natural scenes and objects. [@yarbus, esp. chapters I, IV, VII]
 
+Yarbus' results showed that the paths a person's gaze takes depends on the task the person is trying to solve: If a person is asked a specific question about an image, her eyes would focus on areas relevant to answer that question and neglect others. [@wiki:yarbus]
 
 ## Treisman's Feature Integration Theory
 
@@ -49,6 +49,8 @@ like orientation, color, brightness, and more are sensed and combined
 (integrated) before they are mentally perceived as a whole. However, it makes
 sense to perceive objects as a whole without consciously realizing their
 parts to be able to reason about our environment. [@treisman]
+
+Basically the feature integration theory divides the process of perception into two stages, the preattentive stage and the focused attention stage. In the preattentive stage the objet is analyzed, while the focused attention stage combines the analyzed features. Thus it falls roughly in the category of early selection models (see above), since during the preattentive stage the information is filtered before it is actively attended/processed. [@wiki:fit]
 
 # Topics
 
@@ -67,8 +69,7 @@ Attention is considered exogenous if it is controlled through an external
 process, likewise it is considered endogenous if controlled through an
 internal process. In general exogenous process also employ an endogenous
 component, since an external stimulus is considered to only cause a shift in
-attention if it is important to the subject [@wiki:attention].
-
+attention if it is important to the subject. Exogenous attention is in general considered to be less affected by cognitive load and it is not possible to ignore external cues. Endogenous attention is often connected to top-down processing, as it is a more active and voluntary approach than exogenous attention. Despite their differenceEndogenous attention is often connected to top-down processing, as it is a more active and voluntary approach than exogenous attention. Despite their differencess, both are connected at least partly to the same brain areas. [@wiki:attention]
 
 # References
 
