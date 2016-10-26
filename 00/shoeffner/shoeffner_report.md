@@ -54,9 +54,11 @@ There are several possibilities for the number of participants.
 
 ## 0 participants: artificial data
 
-Since there are only 15 data points per image it is possible that the data was hand crafted to provide some sample data.
-These could have been used to test visualizations, analytics pipelines and other processing steps before doing an actual
-experiment or without employing eyetrackers.
+Since there are only 15 data points per image (plus the `(0,0)` coordinate) it
+is possible that the data was hand crafted to provide some sample data.  These
+could have been used to test visualizations, analytics pipelines and other
+processing steps before doing an actual experiment or without employing
+eyetrackers.
 
 ## 1 participant: averaged or sampled data
 
