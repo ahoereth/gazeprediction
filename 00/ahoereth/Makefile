@@ -1,4 +1,4 @@
-SRC=$(wildcard **/*.md)
+SRC=$(wildcard *.md)
 PHONYS=$(SRC:.md=)
 
 all: $(PHONYS)

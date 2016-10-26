@@ -42,8 +42,8 @@ In figure 1 and 2 the 7 fixation point sets are plotted onto their respective st
 
 The results for image 5 (figure 2) seem inconclusive: Either the fixation data set is labelled incorrectly (it might instead be related to the single bottle from image 6) or the fixations were recorded too early or late and are focussed on the center due to a fixation cross from the experiment design, the background noise or a transition from/to another image. Another possibility might be that the data is averaged: When an equal amount of focus lies on the left as on the right object, the average could result in the data on hand.
 
-![First set of images with fixation points.](ahoereth/ahoereth_focus1.jpg)
+![First set of images with fixation points.](ahoereth_focus1.jpg)
 
-![Second set of images with fixation points.](ahoereth/ahoereth_focus2.jpg)
+![Second set of images with fixation points.](ahoereth_focus2.jpg)
 
 > Guess, how many viewers in the experiment?
