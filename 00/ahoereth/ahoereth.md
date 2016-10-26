@@ -37,6 +37,11 @@ The feature integration theory describes a two step process for perception.
 Due to the unconscious nature of the feature detection from the first stage it is, according to Triesman, possible to very quickly filter for objects of interest by their general features before actually having to actively attend to them in phase two.
 
 
+### Exogenous and endogenous attention
+The terms exogenous and endogenous refer to external or internal control processes, respectively. Exogenous attention control processes are considered to be reflexive and therefore mostly not controllable by the subject. They can for example be triggered by sudden changes in the peripheral visual area, for example light flashes or quick movements. In contrast to such reflexive reactions endogenous control processes are intentional and require wilful decisions.
+
+
+
 ## Gaze Plotting
 In figure 1 and 2 the 7 fixation point sets are plotted onto their respective stimuli images. As we do not know under which circumstances the fixations were recorded there are different possibilities for the results and their discrepancies. For the images 1 to 4 (figure 1) it seems like subjects were asked to determine brand names -- as demonstrated by Yarbus relevant questions influence subjects gaze.
 
