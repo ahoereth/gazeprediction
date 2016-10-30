@@ -2,7 +2,7 @@ I know what you are looking at*
 studip*
 **/*.pdf
 .DS_Store
-
+**/.ipynb_checkpoints
 .venv
 *.swp
 *.zip
