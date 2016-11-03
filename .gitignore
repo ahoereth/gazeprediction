@@ -6,3 +6,4 @@ studip*
 .venv
 *.swp
 *.zip
+*.*~
