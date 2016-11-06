@@ -10,29 +10,62 @@ imagenames = {...
     'https://farm3.static.flickr.com/2149/2533754002_e65867eefa.jpg',...
     'https://upload.wikimedia.org/wikipedia/commons/6/67/Polycarpa_Nick_Hobgood.jpg',...
     'https://farm1.static.flickr.com/156/429303462_043a802d91.jpg',...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0020.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0088.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0100.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0135.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0140.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0150.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0155.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0225.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0280.jpg'],...
+    ['..' filesep 'studip' filesep 'PreliminaryReport' filesep 'task000' filesep 'a_comm_0290.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-01.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-02.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-03.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-04.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-05.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-06.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-07.jpg'],...
+    ['..' filesep 'studip' filesep 'Dataset' filesep 'visual-search-task' filesep 'vst-08.jpg'],...
 };
-
-sms = {length(imagenames)};
-images = {length(imagenames)};
 
 imagedir = 'images';
 if ~isdir(imagedir)
     mkdir(imagedir);
 end
-    
+
+sms = {length(imagenames)};
+images = {length(imagenames)};
+masks = {length(imagenames)};
+
 for i = 1 : length(imagenames)
-    images{i} = load_or_download(imagenames{i}, imagedir);
-    sm = SalientRegionDetector(images{i});
-    sms{i} = sm;
-    
     [filepath, filename, fileext] = fileparts(imagenames{i});
-    imwrite(sm, [imagedir filesep 'sm_' filename fileext]);
+    
+    images{i} = load_or_download(imagenames{i}, imagedir);
+    
+    sm = SalientRegionDetector(images{i});
+    sms{i} = sqrt(sm);
+    imwrite(uint8(repmat(sms{i} ./ max(max(sms{i})) * 255, [1 1 3])), [imagedir filesep 'sm_' filename fileext]);
+    
+    % fix threshold
+    masks{i} = sm > 200;
+    imwrite(images{i} .* repmat(uint8(masks{i}), [1 1 3]), [imagedir filesep 'fix_thresh_' filename fileext]);
+
+    % adaptive threshold
+    masks{i} = sms{i} > 2 * mean(mean(sms{i}));
+    imwrite(images{i} .* repmat(uint8(masks{i}), [1 1 3]), [imagedir filesep 'thresh_' filename fileext]);
 end
 
 figure();
+c = 4;
 for i = 1 : length(sms)
-    subplot(ceil(length(sms)/2), 4, 2 * i - 1);
+    subplot(length(sms), c, c * i - 3);
     imshow(images{i}, []);
-    subplot(ceil(length(sms)/2), 4, 2 * i);
+    subplot(length(sms), c, c * i - 2);
     imshow(sms{i}, []);
+    subplot(length(sms), c, c * i - 1);
+    imshow(masks{i}, []);
+    subplot(length(sms), c, c * i);
+    imshow(images{i} .* repmat(uint8(masks{i}), [1 1 3]), []);
 end
