@@ -60,11 +60,13 @@ For some tasks, which were solved with human level performance [@itti], this sim
 
 The algorithm segments all elements very well, even with simple thresholding. But it is unable to distinguish between different item properties, thus unable to solve the task in finding outliers.
 
-A very interesting phenomenom arises when the foreground object dominates the view area and is of a very homogenous color. In this case the algorithm segments out the foreground.
+A very interesting phenomenom arises when the foreground object dominates the view area and is of a very homogenous color[^flower]. In this case the algorithm segments out the foreground.
+
+[^flower]: Image taken from [flickr via ImageNet](https://farm4.static.flickr.com/3220/3555690726_4d876d7195.jpg)
 
 ![](report-images/3555690726_4d876d7195.jpg){width=200}\ ![](report-images/thresh_3555690726_4d876d7195.jpg){width=200}
 
-More images as well as the saliency maps can be found attached with the report.
+More images as well as their saliency maps can be found attached with the report.
 
 # Conclusion
 
