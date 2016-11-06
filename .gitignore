@@ -7,3 +7,13 @@ studip*
 *.swp
 *.zip
 *.*~
+
+# Latex
+*.aux
+*.bbl
+*.blg
+*.log
+*.nav
+*.out
+*.snm
+*.toc
