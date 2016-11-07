@@ -8,7 +8,7 @@
 \subtitle{Radhakrishna Achanta, Sheila Hemami, Francisco Estrada, and Sabine Süsstrunk}
 \author{Alexander Höreth and Sebastian Höffner}
 \institute{Institute of Cognitive Science\\University of Osnabrück}
-\date[Nov 7, 2016]{I know what you are looking at! -- Gaze Prediction, November 7, 2016}
+\date[Nov~7,~2016]{I know what you are looking at! -- Gaze Prediction\\November~7,~2016}
 \subject{Gaze Prediction}
 
 \def\colorful#1{{\usebeamercolor[fg]{enumerate item}#1}}
@@ -49,8 +49,8 @@
     \frametitle{Algorithm}
     \begin{enumerate}
         \item Convert input to lab color space
-        \item Calculate mean image
-        \item Filter input with 5x5 Gaussian kernel ($\sigma = 1.6$, $I_{\omega}$
+        \item Calculate mean image $I_{\mu}$
+        \item Filter input with 5x5 Gaussian kernel ($\sigma = 1.6$, $I_{\omega}$)
         \item $I_S = I_{\mu} - I_{\omega}$
         \item Euclidean distance of $I_S$ yields $S$
         \item Perform mean-shift segmentation
