@@ -1,13 +1,10 @@
+# course files
 I know what you are looking at*
 studip*
+
+# generated files
 **/*.pdf
-.DS_Store
-
-.venv
-*.swp
 *.zip
-*.*~
-
 # Latex
 *.aux
 *.bbl
@@ -17,3 +14,13 @@ studip*
 *.out
 *.snm
 *.toc
+
+# virutal environments
+**/.ipynb_checkpoints
+.venv
+
+# temp and junk files
+*.*~
+*.swp
+.DS_Store
+
