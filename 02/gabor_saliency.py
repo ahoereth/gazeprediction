@@ -45,8 +45,10 @@ def _make_pyramids(img):
     return pyramids
 
 
-def _center_surround_diff(c, s, a, b=np.zeros(8)):
-    return (a[c]-b[c]) - cv2.resize(-1*b[s]+a[s], a[c].shape[::-1])
+def _center_surround_diff(c, s, a, b=None):
+    l = a[c] - (b[c] if b is not None else 0)
+    r = a[s] if b is None else b[s] - a[s]
+    return l - cv2.resize(r, l.shape[::-1])
 
 
 def _normalize(img):
