@@ -4,7 +4,7 @@ from sys import argv
 from getopt import getopt
 from matplotlib import pyplot as plt
 from os.path import basename, splitext
-from scipy.signal import argrelextrema
+from scipy.signal import argrelextrema, convolve2d
 
 
 def _split(img):
@@ -35,7 +35,7 @@ def _generate_gabors(shape=(16, 16), sigma=1, lambd=10, gamma=.5, psi=0):
 
 
 def _apply_gabors(img, gabors):
-    return [cv2.filter2D(img, -1, gabor) for gabor in gabors]
+    return [convolve2d(img, gabor) for gabor in gabors]
 
 
 def _make_pyramids(img):
@@ -54,7 +54,7 @@ def _center_surround_diff(c, s, a, b=None):
 def _normalize(img):
     M = np.max(img)
     m = np.mean([m for m in img[argrelextrema(img, np.greater)] if m != M])
-    return np.copy(img) * ((M - m) ** 2)
+    return img * ((M - m) ** 2)
 
 
 def _addition(imgs, size):
@@ -64,7 +64,7 @@ def _addition(imgs, size):
 
 def gabor_saliency(impath):
     img = plt.imread(impath)
-    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
     r, g, b, I = _split(img)
     r, g, b = (_normalize_channel(c, I) for c in (r, g, b))
@@ -74,7 +74,7 @@ def gabor_saliency(impath):
     gabored = _apply_gabors(img_gray, gabors)
 
     Rp, Gp, Bp, Yp, Ip = (_make_pyramids(m) for m in (R, G, B, Y, I))
-    Ops = [_make_pyramids(gabor) for gabor in gabors]
+    Ops = [_make_pyramids(gabor) for gabor in gabored]
 
     cs = np.asarray([(2, 5), (2, 6), (3, 6), (3, 7), (4, 7), (4, 8)]) - 1
     Ics = [_center_surround_diff(c, s, Ip) for c, s in cs]
