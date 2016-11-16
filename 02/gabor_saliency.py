@@ -29,7 +29,7 @@ def _RGB(r, g, b):
     return R, G, B, Y
 
 
-def _generate_gabors(shape=(16, 16), sigma=1, lambd=10, gamma=.5, psi=0):
+def _generate_gabors(shape=(16, 16), sigma=2, lambd=10, gamma=.5, psi=0):
     return [cv2.getGaborKernel(shape, sigma, theta, lambd, gamma, psi)
             for theta in range(0, 180, 45)]
 
@@ -64,7 +64,8 @@ def _addition(imgs, size):
 
 def gabor_saliency(impath):
     img = plt.imread(impath)
-    img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    # img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) # broken w/ cv2.filter2D
+    img_gray = np.dot(img[..., :3], [.299, .587, .114])
 
     r, g, b, I = _split(img)
     r, g, b = (_normalize_channel(c, I) for c in (r, g, b))
