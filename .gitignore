@@ -24,3 +24,4 @@ studip*
 *.swp
 .DS_Store
 
+matplotlibrc

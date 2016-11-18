@@ -4,7 +4,7 @@ from sys import argv
 from getopt import getopt
 from matplotlib import pyplot as plt
 from os.path import basename, splitext
-from scipy.signal import argrelextrema, convolve2d
+from scipy.signal import argrelextrema, convolve2d, order_filter
 
 
 def _split(img):
@@ -53,7 +53,14 @@ def _center_surround_diff(c, s, a, b=None):
 
 def _normalize(img):
     M = np.max(img)
-    m = np.mean([m for m in img[argrelextrema(img, np.greater)] if m != M])
+    # 4-neighborhood
+    kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+    # 8-neighborhood
+    kernel = np.ones((3, 3), dtype=np.int)
+    filtered = order_filter(img, kernel, np.sum(kernel) - 1)
+    plt.imshow(np.equal(np.equal(img, filtered), filtered != M))
+    plt.show(True)
+    m = np.mean(img[np.equal(np.equal(img, filtered), filtered != M)])
     return img * ((M - m) ** 2)
 
 
