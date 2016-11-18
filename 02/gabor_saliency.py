@@ -58,8 +58,6 @@ def _normalize(img):
     # 8-neighborhood
     kernel = np.ones((3, 3), dtype=np.int)
     filtered = order_filter(img, kernel, np.sum(kernel) - 1)
-    plt.imshow(np.equal(np.equal(img, filtered), filtered != M))
-    plt.show(True)
     m = np.mean(img[np.equal(np.equal(img, filtered), filtered != M)])
     return img * ((M - m) ** 2)
 
