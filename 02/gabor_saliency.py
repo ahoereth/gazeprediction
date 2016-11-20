@@ -4,16 +4,16 @@ from sys import argv
 from getopt import getopt
 from matplotlib import pyplot as plt
 from os.path import basename, splitext
-from scipy.signal import argrelextrema, convolve2d
+from scipy.signal import argrelextrema, convolve2d, order_filter
 
 
 def _split(img):
     r, g, b = (img[:, :, 0], img[:, :, 1], img[:, :, 2])
-    return r, g, b, (r + g + b) / 3
+    return r, g, b, (r + g + b) / 3.
 
 
 def _normalize_channel(nom, denom):
-    threshold = 0.1*np.max(denom)
+    threshold = 0.1 * np.max(denom)
     nom = np.copy(nom)
     yes = np.where(denom > threshold)
     nom[np.where(denom <= threshold)] = 0
@@ -22,10 +22,10 @@ def _normalize_channel(nom, denom):
 
 
 def _RGB(r, g, b):
-    R = r - (g + b) / 2
-    G = g - (r + b) / 2
-    B = b - (r + g) / 2
-    Y = (r + g) / 2 - np.abs(r - g) / 2 - b
+    R = r - (g + b) / 2.
+    G = g - (r + b) / 2.
+    B = b - (r + g) / 2.
+    Y = (r + g) / 2. - np.abs(r - g) / 2. - b
     return R, G, B, Y
 
 
@@ -53,7 +53,12 @@ def _center_surround_diff(c, s, a, b=None):
 
 def _normalize(img):
     M = np.max(img)
-    m = np.mean([m for m in img[argrelextrema(img, np.greater)] if m != M])
+    # 4-neighborhood
+    # kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+    # 8-neighborhood
+    kernel = np.ones((3, 3), dtype=np.int)
+    filtered = order_filter(img, kernel, np.sum(kernel) - 1)
+    m = np.mean(img[np.equal(np.equal(img, filtered), filtered != M)])
     return img * ((M - m) ** 2)
 
 
@@ -94,14 +99,16 @@ def gabor_saliency(impath):
     Obar = np.sum([_normalize(_addition(Ocs, shape)) for Ocs in Otcs], 0)
 
     S = _normalize(Ibar) + _normalize(Cbar) + _normalize(Obar)
-    S = cv2.resize(1/3 * S, img.shape[1::-1])
+    S = cv2.resize(1./3. * S, img.shape[1::-1])
 
-    return S, gabored, gabors
+    return S, gabored, gabors, img_gray
 
 
 def main(impath, *args):
-    S, gabored, gabors = gabor_saliency(impath)
+    S, gabored, gabors, gray = gabor_saliency(impath)
     name = splitext(basename(impath))[0]
+    
+    plt.imsave('{}_gray.png'.format(name), gray, cmap='gray')
     plt.imsave('{}_saliency.png'.format(name), S, cmap='gray')
     for i, (gabor, gabored) in enumerate(zip(gabors, gabored)):
         plt.imsave('{}_gabor_{}.png'.format(name, i), gabor, cmap='gray')
