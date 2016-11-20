@@ -31,7 +31,7 @@ def _RGB(r, g, b):
 
 def _generate_gabors(shape=(16, 16), sigma=2, lambd=10, gamma=.5, psi=0):
     return [cv2.getGaborKernel(shape, sigma, theta, lambd, gamma, psi)
-            for theta in range(0, 180, 45)]
+            for theta in np.arange(0, np.pi, np.pi/4)]
 
 
 def _apply_gabors(img, gabors):
