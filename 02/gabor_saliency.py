@@ -101,12 +101,14 @@ def gabor_saliency(impath):
     S = _normalize(Ibar) + _normalize(Cbar) + _normalize(Obar)
     S = cv2.resize(1./3. * S, img.shape[1::-1])
 
-    return S, gabored, gabors
+    return S, gabored, gabors, img_gray
 
 
 def main(impath, *args):
-    S, gabored, gabors = gabor_saliency(impath)
+    S, gabored, gabors, gray = gabor_saliency(impath)
     name = splitext(basename(impath))[0]
+    
+    plt.imsave('{}_gray.png'.format(name), gray, cmap='gray')
     plt.imsave('{}_saliency.png'.format(name), S, cmap='gray')
     for i, (gabor, gabored) in enumerate(zip(gabors, gabored)):
         plt.imsave('{}_gabor_{}.png'.format(name, i), gabor, cmap='gray')
