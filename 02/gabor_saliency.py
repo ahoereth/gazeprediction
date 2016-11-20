@@ -54,7 +54,7 @@ def _center_surround_diff(c, s, a, b=None):
 def _normalize(img):
     M = np.max(img)
     # 4-neighborhood
-    kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+    # kernel = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
     # 8-neighborhood
     kernel = np.ones((3, 3), dtype=np.int)
     filtered = order_filter(img, kernel, np.sum(kernel) - 1)
