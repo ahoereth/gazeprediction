@@ -2,8 +2,12 @@
 I know what you are looking at*
 studip*
 
+# data
+*.avi
+
 # generated files
 **/*.pdf
+03/*.png
 *.zip
 # Latex
 *.aux
