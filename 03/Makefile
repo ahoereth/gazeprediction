@@ -1,7 +1,7 @@
 report:
 	pandoc \
 		-f markdown+multiline_tables \
-		-o report_zivkovi2006_seasquirt.pdf \
+		-o report_zivkovic2006_seasquirt.pdf \
 		--bibliography=report.bib \
 		report.md
 
@@ -10,5 +10,6 @@ slides:
 
 zip: report slides
 	zip -r Task3_seasquirt.zip \
-		report_zivkovi2006_seasquirt.pdf
+		ComparisonBackgroundSubtraction.ipynb \
+		report_zivkovic2006_seasquirt.pdf
 
