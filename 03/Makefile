@@ -14,6 +14,7 @@ slides:
 		-o slides_zivkovic2006_seasquirt.pdf \
 		--bibliography=report.bib \
 		--slide-level=2 \
+		--listings \
 		slides.md
 
 zip: report slides
