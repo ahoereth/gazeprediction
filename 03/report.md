@@ -105,7 +105,7 @@ Table: Comparing masks for different example videos. Videos taken from [OpenCV][
 
 The better performance comes at a cost: There are couple of more false-positives, i.e. noise, in the resulting mask. Especially for the night scenario (cf. Table 1, AVSS PV Night/MOG2 Mask) there is much more noise in the image. This might also be because the image itself seems to be of a lower quality concerning noise and color depth. A slightly more subtle difference can be found in the MOG2 mask for the OpenCV video 768x576 (Figure 2): Even though the people are well found, there is a lot of noise across the whole image, probably because the scene is filmed from very far away and the foreground itself is really small.
 
-![Cropped binary masks of video 768x576. It can clearly be seen that MOG (left) has fewer noise than MOG2 (right). When paying close attention to the split person in the center, one can also see a slight difference in the quality of the mask (at the legs).](768x576_comp_mask_f100.png)
+![Cropped masks of video 768x576. It can clearly be seen that MOG (left) has fewer noise than MOG2 (right). When paying close attention to the split person in the center, one can also see a slight difference in the quality of the mask (at the legs).](768x576_comp_mask_f100.png)
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
