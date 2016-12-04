@@ -6,6 +6,8 @@
 navigation: empty
 theme: CambridgeUS
 colortheme: beaver
+header-includes:
+  - \usepackage[all]{nowidow}
 ---
 
 # Background Subtraction
@@ -94,7 +96,7 @@ While both algorithms are capable of extracting shadows, OpenCV only implements 
 ![MOG2 applied to `768x576.avi`[^linkopencv] [@opencv] with and without shadows. White denotes foreground, gray shadows and black background.](768x576_comp_fg_shadow_f100.png){width=70%}
 
 
-## Application
+## Application I
 
 ---------------------------------------------------------------------------------------------
 Original Frame                 MOG Mask                       MOG2 Mask
@@ -105,7 +107,7 @@ Original Frame                 MOG Mask                       MOG2 Mask
 Table: Frame 100 from video `768x576.avi`.
 
 
-## Application cont.
+## Application II
 
 ---------------------------------------------------------------------------------------------------
 Original Frame                   MOG Mask                         MOG2 Mask
@@ -116,7 +118,7 @@ Original Frame                   MOG Mask                         MOG2 Mask
 Table: Frame 100 from video `1920x1080.avi`[^linkopencv] [@opencv].
 
 
-## Application cont. 2
+## Application III
 
 ---------------------------------------------------------------------------------------------------------------------------
 Original Frame                           MOG Mask                                 MOG2 Mask
@@ -127,7 +129,7 @@ Original Frame                           MOG Mask                               
 Table: Frame 500 from video `AVSS_AB_Easy_Divx.avi`[^linkavss] [@avss07].
 
 
-## Application cont. 3
+## Application IV
 
 ---------------------------------------------------------------------------------------------------------------------------
 Original Frame                           MOG Mask                                 MOG2 Mask
@@ -138,7 +140,7 @@ Original Frame                           MOG Mask                               
 Table: Frame 500 from video `AVSS_AB_Hard_Divx.avi`.
 
 
-## Application cont. 4
+## Application V
 
 ------------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Mask                                  MOG2 Mask
@@ -156,7 +158,7 @@ MOG2 generates more complete foreground masks but with overall more background n
 ![Cropped masks of video `768x576.avi`. MOG (left) has less noise than MOG2 (right). Pay attention to split person's legs.](768x576_comp_mask_f100.png){width=06giarch%}
 
 
-## Foreground Extraction
+## Foreground Extraction I
 
 --------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Foreground                          MOG2 Foreground
@@ -167,7 +169,7 @@ Original Frame                            MOG Foreground                        
 Table: Frame 100 from video `768x576.avi`.
 
 
-## Foreground Extraction cont.
+## Foreground Extraction II
 
 --------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Foreground                          MOG2 Foreground
@@ -178,7 +180,7 @@ Original Frame                            MOG Foreground                        
 Table: Frame 100 from video `1920x1080.avi`.
 
 
-## Foreground Extraction cont. 2
+## Foreground Extraction III
 
 --------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Foreground                          MOG2 Foreground
@@ -189,7 +191,7 @@ Original Frame                            MOG Foreground                        
 Table: Frame 500 from video `AVSS_AB_Easy_Divx.avi`.
 
 
-## Foreground Extraction cont. 3
+## Foreground Extraction IV
 
 --------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Foreground                          MOG2 Foreground
@@ -200,7 +202,7 @@ Original Frame                            MOG Foreground                        
 Table: Frame 500 from video `AVSS_AB_Hard_Divx.avi`.
 
 
-## Foreground Extraction cont. 4
+## Foreground Extraction V
 
 --------------------------------------------------------------------------------------------------------------------------
 Original Frame                            MOG Foreground                          MOG2 Foreground
@@ -211,9 +213,8 @@ Original Frame                            MOG Foreground                        
 Table: Frame 500 from video `AVSS_AB_Night_Divx.avi`.
 
 
-# Thank you for listening
-## References
-
+# Thank you for your attention!
+## References {.allowframebreaks}
 
 [^linkmog]: [github.com/opencv/opencv/blob/modules/cudabgsegm/src/mog.cpp](https://github.com/opencv/opencv/blob/modules/cudabgsegm/src/mog.cpp)
 
@@ -224,7 +225,3 @@ Table: Frame 500 from video `AVSS_AB_Night_Divx.avi`.
 [^linkopencv]: [github.com/opencv/opencv_extra/tree/7054d3f/testdata/cv/video](https://github.com/opencv/opencv_extra/tree/7054d3f5d957c8f4849aea34aa1dcbadf4207a38/testdata/cv/video)
 
 [^linkavss]: [eecs.qmul.ac.uk/~andrea/avss2007_d.html](http://www.eecs.qmul.ac.uk/~andrea/avss2007_d.html)
-
-[linkcvloop]: https://pypi.python.org/pypi/cvloop/0.1.1
-
-<!-- references will appear here -->
