@@ -1,4 +1,8 @@
-all: report slides zip
+zip: report slides
+	zip -r Task3_seasquirt.zip \
+		ComparisonBackgroundSubtraction.ipynb \
+		report_zivkovic2006_seasquirt.pdf \
+		slides_zivkovic2006_seasquirt.pdf
 
 report:
 	pandoc \
@@ -16,8 +20,3 @@ slides:
 		--slide-level=2 \
 		--listings \
 		slides.md
-
-zip: report slides
-	zip -r Task3_seasquirt.zip \
-		ComparisonBackgroundSubtraction.ipynb \
-		report_zivkovic2006_seasquirt.pdf
