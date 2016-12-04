@@ -153,7 +153,62 @@ Table: Frame 500 from video `AVSS_AB_Night_Divx.avi`.
 
 MOG2 generates more complete foreground masks but with overall more background noise than MOG.
 
-![Cropped masks of video `768x576.avi`. MOG (left) has less noise than MOG2 (right). Pay attention to split person's legs.](768x576_comp_mask_f100.png){width=60%}
+![Cropped masks of video `768x576.avi`. MOG (left) has less noise than MOG2 (right). Pay attention to split person's legs.](768x576_comp_mask_f100.png){width=06giarch%}
+
+
+## Foreground Extraction
+
+--------------------------------------------------------------------------------------------------------------------------
+Original Frame                            MOG Foreground                          MOG2 Foreground
+----------------------------------------- --------------------------------------- ----------------------------------------
+![](768x576_original_f100.png)            ![](768x576_fg_mog_f100.png)            ![](768x576_fg_mog2_f100.png)
+--------------------------------------------------------------------------------------------------------------------------
+
+Table: Frame 100 from video `768x576.avi`.
+
+
+## Foreground Extraction cont.
+
+--------------------------------------------------------------------------------------------------------------------------
+Original Frame                            MOG Foreground                          MOG2 Foreground
+----------------------------------------- --------------------------------------- ----------------------------------------
+![](1920x1080_original_f100.png)          ![](1920x1080_fg_mog_f100.png)          ![](1920x1080_fg_mog2_f100.png)
+--------------------------------------------------------------------------------------------------------------------------
+
+Table: Frame 100 from video `1920x1080.avi`.
+
+
+## Foreground Extraction cont. 2
+
+--------------------------------------------------------------------------------------------------------------------------
+Original Frame                            MOG Foreground                          MOG2 Foreground
+----------------------------------------- --------------------------------------- ----------------------------------------
+![](AVSS_AB_Easy_Divx_original_f500.png)  ![](AVSS_AB_Easy_Divx_fg_mog_f500.png)  ![](AVSS_AB_Easy_Divx_fg_mog2_f500.png)
+--------------------------------------------------------------------------------------------------------------------------
+
+Table: Frame 500 from video `AVSS_AB_Easy_Divx.avi`.
+
+
+## Foreground Extraction cont. 3
+
+--------------------------------------------------------------------------------------------------------------------------
+Original Frame                            MOG Foreground                          MOG2 Foreground
+----------------------------------------- --------------------------------------- ----------------------------------------
+![](AVSS_PV_Hard_Divx_original_f500.png)  ![](AVSS_PV_Hard_Divx_fg_mog_f500.png)  ![](AVSS_PV_Hard_Divx_fg_mog2_f500.png)
+--------------------------------------------------------------------------------------------------------------------------
+
+Table: Frame 500 from video `AVSS_AB_Hard_Divx.avi`.
+
+
+## Foreground Extraction cont. 4
+
+--------------------------------------------------------------------------------------------------------------------------
+Original Frame                            MOG Foreground                          MOG2 Foreground
+----------------------------------------- --------------------------------------- ----------------------------------------
+![](AVSS_PV_Night_Divx_original_f500.png) ![](AVSS_PV_Night_Divx_fg_mog_f500.png) ![](AVSS_PV_Night_Divx_fg_mog2_f500.png)
+--------------------------------------------------------------------------------------------------------------------------
+
+Table: Frame 500 from video `AVSS_AB_Night_Divx.avi`.
 
 
 # Thank you for listening
