@@ -1,3 +1,5 @@
+all: report slides zip
+
 report:
 	pandoc \
 		-f markdown+multiline_tables \
@@ -6,10 +8,15 @@ report:
 		report.md
 
 slides:
-	echo "No slides yet."
+	pandoc \
+		-t beamer \
+		-f markdown+multiline_tables \
+		-o slides_zivkovic2006_seasquirt.pdf \
+		--bibliography=report.bib \
+		--slide-level=2 \
+		slides.md
 
 zip: report slides
 	zip -r Task3_seasquirt.zip \
 		ComparisonBackgroundSubtraction.ipynb \
 		report_zivkovic2006_seasquirt.pdf
-

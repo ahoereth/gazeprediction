@@ -27,7 +27,7 @@ In @stauffer99 three to five Gaussians are used (depending on available computat
 
 # Improving Background Subtraction
 
-In the early 2000s, two improvements of @stauffer99 have been propsed. The first is the "Improved Adaptive Background Mixture Model" (MOG) by @ktkp01, the second is the "Improved Adaptive Gaussian Mixture Model" (MOG2) described by @zivkovic04 and detailed further by @zivkovic06. In the following we will explain the differences between these two algorithms and @stauffer99 as well as compare MOG and MOG2 in some applications.
+In the early 2000s, two improvements of @stauffer99 have been proposed. The first is the "Improved Adaptive Background Mixture Model" (MOG) by @ktkp01, the second is the "Improved Adaptive Gaussian Mixture Model" (MOG2) described by @zivkovic04 and detailed further by @zivkovic06. In the following we will explain the differences between these two algorithms and @stauffer99 as well as compare MOG and MOG2 in some applications.
 
 ## Improved Adaptive Background Mixture Model (MOG)
 
