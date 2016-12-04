@@ -7,7 +7,7 @@
 
 The following report will introduce the concept of applying Gaussian mixtures for computer vision tasks. Specifically we will discuss two algorithms which prove quite successful in background subtraction and tracking of animated objects in scenes.
 
-The foundation for background subtraction approaches through statistical models like the ones presented in this report is the predictable property of static components in video streams. In order to fulfill the requirement of static components of a scene to actually appear as such we will in the following only discuss the case of statically positioned cameras. By fitting a statistical model to a scene which fulfills this requirement it is possible to track animated objects like people or cars by detecting resulting inconsistencies with the model's prediction.
+The foundation of background subtraction approaches through statistical models, like the ones presented in this report, is the predictable property of static components in video streams. In order to fulfill the requirement of static components of a scene to actually appear as such, we will in the following only discuss the case of statically positioned cameras. By fitting a statistical model to a scene which fulfills this requirement it is possible to track animated objects like people or cars by detecting resulting inconsistencies with the model's prediction.
 
 The big challenge in fulfilling this rather straight forward idea is to update the model appropriately over time in order to smoothly handle changes in the static parts of the scene itself (e.g. parked cars or moved chairs) or for example to general lighting conditions.
 
@@ -16,13 +16,13 @@ The big challenge in fulfilling this rather straight forward idea is to update t
 
 Background subtraction is a common task in computer vision. It is important for several tasks, for example surveillance monitoring, motion detection, or image segmentation. In surveillance applications it could provide means to skip through parts where the scene is not changing, in motion detection it can provide real time feedback when something is moving through the image.
 
-For many applications however it is only necessary to subtract the background such that the foreground can be used for further processing steps: after detecting humans it might follow to identify them, after segmenting a scene into its different actors the semantic meaning could be inferred. Essentially removing the background allows to focus on a specific task.
+For many applications however, it is only necessary to subtract the background such that the foreground can be used for further processing steps: after detecting humans it might follow to identify them, after segmenting a scene into its different actors the semantic meaning could be inferred. Essentially removing the background allows to focus on a specific task.
 
 ## Mixture of Gaussians
 
 One common method for performing background subtraction is to calculate a mask which labels each pixel of an input image as being either foreground ($1$) or background ($0$). @stauffer99 proposed a novel method which uses a mixture of Gaussians as a model to estimate the probability of a pixel being part of the foreground or background. Before, especially in @wren97, only single Gaussians have been used.
 
-In @stauffer99 three to five Gaussians are used (depending on available computational power) to model whether a pixel belongs to the foreground or background. In general this could be done with algorithms like Expectation Maximization (EM), but since that algorithm is costly @stauffer99 resorted to a variant of K-means. They match pixels to the appropriate distributions and re-estimate the distributions parameters. Then the distributions are sorted by their weights divided by their variance ($\omega/\sigma$), such that the background distributions are heuristically first [@stauffer99, p. 4]. Then the first few distributions are declared as the background (depending on how many distributions are involved, this is a fixed parameter) and all pixels belonging to them can be masked as such.
+In @stauffer99 three to five Gaussians are used (depending on available computational power) to model whether a pixel belongs to the foreground or background. In general this could be done with algorithms like Expectation Maximization (EM), but since that algorithm is costly @stauffer99 resorted to a variant of K-means. They match pixels to the appropriate distributions and re-estimate the distributions parameters. Then the distributions are sorted by their weights divided by their variance ($\omega/\sigma$), such that the background distributions are first [@stauffer99, p. 4]. Then the first few distributions are declared as the background (depending on how many distributions are involved, this is a fixed parameter) and all pixels belonging to them can be masked as such.
 
 
 # Improving Background Subtraction
@@ -31,7 +31,7 @@ In the early 2000s, two improvements of @stauffer99 have been proposed. The firs
 
 ## Improved Adaptive Background Mixture Model (MOG)
 
-@ktkp01 make two major changes to @stauffer99's algorithm. First they allow for more than just three to five Gaussian distributions by introducing new distributions if a pixel is further than $2.5$ standard deviations away from all existing distributions. Second they apply the already proposed EM algorithm instead of K-means to determine each pixel's estimated source distribution. Additionally to these changes @ktkp01 also introduce the ability to detect shadows.
+@ktkp01 make two major changes to Stauffer and Grimson's algorithm. First they allow for more than just three to five Gaussian distributions by introducing new distributions if a pixel is further than $2.5$ standard deviations away from all existing distributions. Second they apply the already proposed EM algorithm instead of K-means to determine each pixel's estimated source distribution. Additionally to these changes @ktkp01 also introduce the ability to detect shadows.
 
 These changes solve two important problems @ktkp01 identified in @stauffer99. By allowing an adaptive number of Gaussian distributions and using the EM algorithm they can predict background or foreground affiliation faster and adapt quicker if the scene changes [@ktkp01, p. 3]. The motivation to detect shadows is that shadows have some properties of the foreground (they are moving and usually co-occur with some foreground objects) while they are in general not an important part of the foreground (but just "occlude" some background).
 
@@ -42,7 +42,7 @@ The variant proposed by @ktkp01 is slightly more precise and expressive than for
 @zivkovic06 use another adaptive method of @stauffer99. They introduce similar changes as @ktkp01 do: besides an adapting number of Gaussians they employ the "balloon estimator" [@zivkovic06, p. 4] as a different approximation of EM than K-means. Just like in MOG, MOG2 is able to detect shadows.
 
 While the shadow detection again solves the problem @stauffer99 have with them, MOG and MOG2 have small differences in their performance.
-In this algorithm the number of Gaussian distributions is adaptive but capped at five, and whenever one needs to be introduced because the others do not explain the new pixel, the Gaussian with the lowest probability (i.e. the Gaussian explaining the fewest number of pixels) is replaced by a new Gaussian. A pixel can not be explained by any of the Gaussians if it is farther away than $3$ standard deviations (compared to $2.5$ in MOG) from all existing Gaussians.
+In this algorithm the number of Gaussian distributions is adaptive but capped at five, and whenever a new Gaussian needs to be introduced because the others do not explain the new pixel, the Gaussian with the lowest probability (i.e. the Gaussian explaining the fewest number of pixels) is replaced. A pixel can not be explained by any of the Gaussians if it is farther away than $3$ standard deviations (compared to $2.5$ in MOG) from all existing Gaussians.
 
 Concerning background detection performance (as can be measured by ROCs, cf. @zivkovic06, p. 6) the changes introduced in MOG2 do not significantly increase compared to the original method by @stauffer99. However, in terms of computation time @zivkovic06 score some improvements over their predecessor. This might be because K-means performs slower than the "balloon estimator" to estimate the Gaussian distributions.
 
@@ -66,7 +66,7 @@ mog2.fgbg = cv2.createBackgroundSubtractorMOG2()
 cvloop('768x576.avi', function=mog2)
 ```
 
-This calculates the mask calculated by each algorithm. To subtract the background from the foreground we introduce the following small addition to mask the original image:
+This calculates each algorithm's mask. To subtract the background from the foreground we introduce the following small addition to mask the original image:
 
 ```python
 import numpy as np
@@ -82,7 +82,7 @@ We compared only specific frames per video: For the shorter OpenCV example video
 
 # Results
 
-In general one of the most striking results is that MOG2 has fewer holes in the masks, leading to a clearer background subtraction. Of course this could be improved even further by closing those holes. Additionally MOG2 extracts the shadows -- it even distinguishes between shadows and foreground, but we just used both as the foreground. MOG should also be able to extract shadows [@ktkp01 Fig.1], however its OpenCV implementation does not provide an option for it. It is still okay to compare the results, as turning the shadow detection off in MOG2 results in the shadows simply being part of the foreground (Figure 1) -- the exact assumption we used for comparisons.
+In general one of the most striking results is that MOG2 has fewer holes in the masks, leading to a more thorough background subtraction. Of course this could be improved even further by closing those holes. Additionally MOG2 extracts the shadows -- it even distinguishes between shadows and foreground, but we just used both as the foreground. MOG should also be able to extract shadows [@ktkp01 Fig.1], however its OpenCV implementation does not provide an option for it. It is still okay to compare the results, as turning the shadow detection off in MOG2 results in the shadows simply being part of the foreground (Figure 1) -- the exact assumption we used for comparisons.
 
 ![Cropped masks of video 768x576: MOG2 applied with and without shadows. White areas are foreground, gray areas shadows and black denotes the background.](768x576_comp_fg_shadow_f100.png)
 
@@ -103,7 +103,7 @@ AVSS PV Night              500       ![](AVSS_PV_Night_Divx_original_f500.png) !
 Table: Comparing masks for different example videos. Videos taken from [OpenCV][linkopencv] [@opencv] and [AVSS 2007][linkavss] [@avss07].
 
 
-The better performance comes at a cost: There are couple of more false-positives, i.e. noise, in the resulting mask. Especially for the night scenario (cf. Table 1, AVSS PV Night/MOG2 Mask) there is much more noise in the image. This might also be because the image itself seems to be of a lower quality concerning noise and color depth. A slightly more subtle difference can be found in the MOG2 mask for the OpenCV video 768x576 (Figure 2): Even though the people are well found, there is a lot of noise across the whole image, probably because the scene is filmed from very far away and the foreground itself is really small.
+The better computational performance comes at a cost: There are couple of more false-positives, i.e. noise, in the resulting mask. Especially for the night scenario (cf. Table 1, AVSS PV Night/MOG2 Mask) there is much more noise in the image. This might also be because the image itself seems to be of a lower quality concerning noise and color depth. A slightly more subtle difference can be found in the MOG2 mask for the OpenCV video 768x576 (Figure 2): Even though the people are well found, there is a lot of noise across the whole image, probably because the scene is filmed from very far away and the foreground itself is really small.
 
 ![Cropped masks of video 768x576. It can clearly be seen that MOG (left) has fewer noise than MOG2 (right). When paying close attention to the split person in the center, one can also see a slight difference in the quality of the mask (at the legs).](768x576_comp_mask_f100.png)
 
