@@ -50,7 +50,7 @@ e.g.
 * use *expectation maximization* instead of k-means
     - k-means was basically an approximation of EM
     - EM got computational feasible
-* detect shadows (FIXME: how?)
+* detect shadows
     - combination of background and foreground features
 * more precise than original algorithm
 
